@@ -4,61 +4,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Prime_Numbers
+namespace Perfect_Numbers
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int num1, num2, i, j, flag;
 
-            Console.Write("\n\n Find prime numbers within a given number of range:\n");
+            int n, i, sum, mn, mx;
+ 
+            Console.Write(" \n\n Find perfect numbers within a given number of range:\n");
             Console.Write("------------------------------------------------------ \n\n");
            
             // Ask user to enter number for starting
-            Console.Write(" Enter number for starting : ");
+            Console.Write("Input the starting range or number : ");
             // Take input
-            num1 = int.Parse(Console.ReadLine());
+            mn = Convert.ToInt32(Console.ReadLine());
 
             // Ask user to enter number for ending
-            Console.Write(" Enter number for ending : ");
+            Console.Write("Input the ending range of number : ");
             // Take input
-            num2 = int.Parse(Console.ReadLine());
+            mx = Convert.ToInt32(Console.ReadLine());
 
             // Print display message
-            Console.WriteLine("\nPrime numbers between " +
-                    "{0} and {1} are: ", num1, num2);
-
-            // Traverse each number in the interval
-            // with the help of for loop
-            for (i = num1; i <= num2; i++)
+            Console.Write("The Perfect numbers within the given range : ");
+            for (n = mn; n <= mx; n++)
             {
-
-                // Skip 0 and 1 as they are
-                // neither prime nor composite
-                if (i == 1 || i == 0)
-                    continue;
-
-                // flag variable to tell
-                // if i is prime or not
-                flag = 1;
-
-                for (j = 2; j <= i / 2; ++j)
+                i = 1;
+                sum = 0;
+                while (i < n)
                 {
-                    if (i % j == 0)
-                    {
-                        flag = 0;
-                        break;
-                    }
+                    if (n % i == 0)
+                        sum = sum + i;
+                    i++;
                 }
-
-                // flag = 1 means i is prime
-                // and flag = 0 means i is not prime
-                if (flag == 1)
-                    Console.WriteLine(i);
+                if (sum == n)
+                    Console.Write("{0} ", n);
             }
+            Console.Write("\n");
             Console.ReadKey();
-        }    
-     
+
+
+
+
+
+
+        }
     }
 }
